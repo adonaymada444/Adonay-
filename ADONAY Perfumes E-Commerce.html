@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>አዶናይ ሽቶ - ADONAY Luxury Perfumes</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter and Noto Sans Ethiopic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                        },
+                        darkBg: '#0f0f12',
+                        darkCard: '#1a1a20',
+                        telebirr: '#00a3e0'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans Ethiopic', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f0f12;
+            color: #f3f4f6;
+            font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #ffe57f 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+        /* Pulse Animation for Map Pin & Yango Car */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-effect {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a20;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ca8a04;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-darkBg/90 backdrop-blur-md border-b border-gold-600/30 px-4 lg:px-8 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-700 via-gold-500 to-amber-200 flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-gold-500/20">
+                A
+            </div>
+            <div>
+                <h1 class="text-xl font-bold gold-gradient-text tracking-wider">አዶናይ ሽቶ</h1>
+                <p class="text-xs text-gray-400">ADONAY Luxury Fragrances</p>
+            </div>
+        </div>
+
+        <!-- Links & Cart Trigger -->
+        <div class="flex items-center space-x-4">
+            <a href="https://www.tiktok.com" target="_blank" class="hidden sm:flex items-center space-x-2 text-xs bg-darkCard border border-gold-600/40 hover:border-gold-400 text-gold-400 px-3 py-1.5 rounded-full transition">
+                <i class="fab fa-tiktok"></i>
+                <span>@king_of_adonay</span>
+            </a>
+            <button onclick="toggleCartModal()" class="relative bg-gold-600 hover:bg-gold-500 text-black px-4 py-2 rounded-xl font-semibold flex items-center space-x-2 transition shadow-md shadow-gold-600/20">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="hidden sm:inline">ካርት</span>
+                <span id="cart-badge-count" class="bg-black text-gold-400 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-6 flex-grow max-w-6xl">
+        
+        <!-- Hero Banner / TikTok Promo -->
+        <div class="relative bg-gradient-to-r from-darkCard via-amber-950/30 to-darkCard rounded-2xl p-6 mb-8 gold-border-glow overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-3 z-10 max-w-xl text-center md:text-left">
+                <span class="bg-gold-500/20 text-gold-400 text-xs px-3 py-1 rounded-full uppercase tracking-widest border border-gold-500/40">ልዩ ቅናሽ እና ጥራት</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white">ምርጥ መዓዛ ያላቸው የወንዶችና የሴቶች ሽቶዎች</h2>
+                <p class="text-gray-300 text-sm">በአዶናይ ሽቶ (ADONAY) ምርጥ የሰውነት ስፕሬይ፣ ሎሽን እና ሮልኦን ምርቶችን በቴሌብር ከፍለው በያንግው ዴሊቨሪ (Yango Delivery) በፍጥነት ባሉበት ቦታ ያስረክቡ!</p>
+                <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a href="https://www.tiktok.com" target="_blank" class="bg-black border border-gold-500 text-gold-400 px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 hover:bg-gold-500 hover:text-black transition">
+                        <i class="fab fa-tiktok text-sm"></i>
+                        <span>ቲክቶክ ላይ ይከተሉን (@king of adonay)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative z-10 flex-shrink-0 w-44 h-44 rounded-2xl bg-gradient-to-tr from-gold-600 to-amber-200 p-1 shadow-2xl">
+                <img src="https://placehold.co/400x400/1a1a20/facc15?text=ADONAY+PERFUME" alt="Adonay Perfume" class="w-full h-full object-cover rounded-xl">
+            </div>
+        </div>
+
+        <!-- Order Workflow Stepper (Progress Tracker) -->
+        <div class="bg-darkCard p-4 rounded-2xl gold-border-glow mb-8">
+            <div class="flex justify-between items-center max-w-3xl mx-auto relative">
+                <!-- Stepper Line -->
+                <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-800 -translate-y-1/2 z-0"></div>
+                <div id="step-line-progress" class="absolute top-1/2 left-0 h-1 bg-gold-500 -translate-y-1/2 z-0 transition-all duration-500" style="width: 0%;"></div>
+
+                <!-- Step 1 Indicator -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div id="step-icon-1" class="w-10 h-10 rounded-full bg-gold-500 text-black font-bold flex items-center justify-center shadow-lg transition">1</div>
+                    <span class="text-xs text-gold-400 mt-2 font-medium">ምርጥ ይምረጡ</span>
+                </div>
+                <!-- Step 2 Indicator -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div id="step-icon-2" class="w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center border border-gray-700 transition">2</div>
+                    <span class="text-xs text-gray-400 mt-2 font-medium">ስልክ ማረጋገጫ (SMS)</span>
+                </div>
+                <!-- Step 3 Indicator -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div id="step-icon-3" class="w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center border border-gray-700 transition">3</div>
+                    <span class="text-xs text-gray-400 mt-2 font-medium">ቴሌብር ክፍያ</span>
+                </div>
+                <!-- Step 4 Indicator -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div id="step-icon-4" class="w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center border border-gray-700 transition">4</div>
+                    <span class="text-xs text-gray-400 mt-2 font-medium">Yango ዴሊቨሪ GPS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN Dynamic SECTION VIEWS -->
+        
+        <!-- SECTION 1: CATALOG PRODUCTS -->
+        <section id="section-catalog" class="space-y-6">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white border-l-4 border-gold-500 pl-3">የአዶናይ ሽቶ ምርቶች catalog</h3>
+                <span class="text-xs text-gray-400">4 ምርቶች አሉ።</span>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-grid">
+                <!-- Javascript renders 4 items here -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: PHONE & SMS OTP VERIFICATION -->
+        <section id="section-otp" class="hidden max-w-md mx-auto bg-darkCard p-6 rounded-2xl gold-border-glow space-y-5">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white">ደረጃ 1: ስልክ ቁጥር ማረጋገጫ</h3>
+                <p class="text-xs text-gray-400 mt-1">ትዕዛዝዎን ለማጠናቀቅ እባክዎ የስልክ ቁጥርዎን ያስገቡ። የማረጋገጫ SMS ላክ የሚለውን ይጫኑ።</p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">የስልክ ቁጥር (Phone Number)</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2.5 text-gray-400 text-sm">+251</span>
+                        <input type="tel" id="user-phone-input" placeholder="912345678" class="w-full bg-darkBg border border-gray-700 rounded-xl py-2 pl-14 pr-3 text-white text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <button onclick="sendOTPCode()" class="w-full bg-gold-600 hover:bg-gold-500 text-black font-bold py-2.5 rounded-xl transition shadow-lg text-sm">
+                    <i class="fas fa-paper-plane mr-1"></i> SMS ኮድ ላክ
+                </button>
+
+                <!-- SMS Notification Toast Simulated -->
+                <div id="sms-toast-simulation" class="hidden bg-gray-900 border-l-4 border-gold-400 p-3 rounded-lg text-xs space-y-1 animate-pulse">
+                    <div class="flex justify-between font-semibold text-gold-300">
+                        <span><i class="fas fa-sms mr-1"></i> አዲስ መልእክት (ADONAY SMS)</span>
+                        <span>አሁን</span>
+                    </div>
+                    <p class="text-gray-200">የአዶናይ ሽቶ ማረጋገጫ ኮድዎ: <strong id="generated-otp-display" class="text-gold-400 text-sm tracking-wider">9842</strong> ነው።</p>
+                </div>
+
+                <!-- OTP Input field -->
+                <div id="otp-field-container" class="hidden space-y-3 pt-2">
+                    <label class="block text-xs font-semibold text-gray-300">የደረሰዎትን 4 ዲጂት ኮድ ያስገቡ</label>
+                    <input type="text" id="otp-input-val" maxlength="4" placeholder="----" class="w-full text-center bg-darkBg border border-gold-500/50 rounded-xl py-2.5 text-2xl font-bold tracking-widest text-gold-400 focus:outline-none">
+                    <button onclick="verifyOTPCode()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl transition text-sm">
+                        <i class="fas fa-check-circle mr-1"></i> ኮዱን አረጋግጥ
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TELEBIRR PAYMENT & RECEIPT SCANNER -->
+        <section id="section-telebirr" class="hidden max-w-xl mx-auto bg-darkCard p-6 rounded-2xl gold-border-glow space-y-6">
+            <div class="text-center">
+                <div class="w-14 h-14 bg-telebirr/20 text-telebirr rounded-full flex items-center justify-center mx-auto mb-2 text-2xl">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">ደረጃ 2: በቴሌብር (Telebirr) ክፍያ መፈጸሚያ</h3>
+                <p class="text-xs text-gray-400 mt-1">የታዘዙትን ዕቃዎች ክፍያ በቴሌብር ሂሳብ ቁጥራችን ይክፈሉ እና ደረሰኙን (Screenshot) እዚህ ይጫኑ።</p>
+            </div>
+
+            <!-- Merchant Info Box -->
+            <div class="bg-darkBg p-4 rounded-xl border border-telebirr/40 space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                    <span class="text-gray-400">የቴሌብር ነጋዴ ስም:</span>
+                    <span class="font-bold text-white">አዶናይ ሽቶ (ADONAY PERFUME)</span>
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                    <span class="text-gray-400">የቴሌብር ስልክ ቁጥር:</span>
+                    <div class="flex items-center space-x-2">
+                        <span id="merchant-phone" class="font-bold text-gold-400 text-sm">0912345678</span>
+                        <button onclick="copyPhone()" class="text-xs text-gray-400 hover:text-white bg-gray-800 px-2 py-0.5 rounded">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center text-xs pt-2 border-t border-gray-800">
+                    <span class="text-gray-400">የሚከፈለው ጠቅላላ ክፍያ:</span>
+                    <span id="telebirr-pay-total" class="font-bold text-emerald-400 text-base">0 ETB</span>
+                </div>
+            </div>
+
+            <!-- Screenshot Upload & Scanner Simulation -->
+            <div class="space-y-4">
+                <label class="block text-xs font-semibold text-gray-300">የቴሌብር ክፍያ ስክሪንሾት (Receipt Screenshot) ይጫኑ</label>
+
+                <div class="flex items-center justify-center w-full">
+                    <label class="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-gold-600/40 hover:border-gold-400 rounded-xl cursor-pointer bg-darkBg hover:bg-gray-900 transition relative overflow-hidden">
+                        <div id="upload-placeholder" class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <i class="fas fa-cloud-upload-alt text-2xl text-gold-400 mb-2"></i>
+                            <p class="text-xs text-gray-300">ምስሉን ለመምረጥ ይጫኑ (Upload Screenshot)</p>
+                            <p class="text-[10px] text-gray-500">PNG, JPG, JPEG</p>
+                        </div>
+                        <input type="file" accept="image/*" id="receipt-file-input" class="hidden" onchange="handleReceiptUpload(event)" />
+                        <!-- Uploaded Preview & Scanner Mask -->
+                        <div id="uploaded-preview-container" class="hidden absolute inset-0 w-full h-full bg-black/80 flex items-center justify-center">
+                            <img id="receipt-preview-img" class="w-full h-full object-contain p-2" src="" alt="Receipt Preview">
+                            <div id="scan-bar" class="hidden absolute left-0 right-0 h-1 bg-emerald-400 shadow-[0_0_15px_#34d399] animate-bounce"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Transaction Reference Code -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">የቴሌብር ትራንዛክሽን ቁጥር (Txn ID)</label>
+                    <input type="text" id="txn-id-input" placeholder="ምሳሌ: FT89237469" class="w-full bg-darkBg border border-gray-700 rounded-xl py-2 px-3 text-white text-sm focus:outline-none focus:border-telebirr">
+                </div>
+
+                <!-- AI System Scanner Status Log -->
+                <div id="scanner-status-log" class="hidden bg-gray-900 p-3 rounded-xl border border-gray-800 text-xs space-y-1">
+                    <div class="flex items-center space-x-2 text-gold-400 font-semibold">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span id="scan-status-text">የቴሌብር ደረሰኝ በስካነር እየተረጋገጠ ነው...</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
+                        <div id="scan-progress-bar" class="bg-emerald-500 h-1.5 rounded-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <button id="verify-payment-btn" onclick="startReceiptScanVerification()" class="w-full bg-telebirr hover:bg-sky-500 text-white font-bold py-3 rounded-xl transition shadow-lg text-sm flex items-center justify-center space-x-2">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>ክፍያውን አረጋግጥ እና ይላኩ</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 4: YANGO DELIVERY LIVE GPS TRACKING -->
+        <section id="section-yango-gps" class="hidden space-y-6">
+            <!-- Yango Alert Banner -->
+            <div class="bg-gradient-to-r from-red-950/60 via-darkCard to-darkCard border border-red-500/40 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center font-black text-white text-xl shadow-lg shadow-red-600/30">
+                        Y
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-red-600 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded">Yango Delivery</span>
+                            <span id="yango-status-badge" class="bg-emerald-500/20 text-emerald-400 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-emerald-500/30">ሹፌር በመመደብ ላይ...</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mt-1">ትዕዛዝዎ በYango Delivery መንገድ ላይ ነው!</h4>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-400">የመድረሻ ግምት (ETA)</p>
+                    <p id="eta-time" class="text-lg font-bold text-gold-400">18-25 ደቂቃ</p>
+                </div>
+            </div>
+
+            <!-- Live Map & Driver Info Split View -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Interactive Map Canvas -->
+                <div class="lg:col-span-2 bg-darkCard rounded-2xl gold-border-glow p-4 relative overflow-hidden h-96 flex flex-col justify-between">
+                    <!-- Map Graphic Simulation -->
+                    <div id="map-simulation-canvas" class="absolute inset-0 bg-[#12161f] opacity-90 flex items-center justify-center">
+                        <!-- Simulated Grid & Roads -->
+                        <svg class="w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 50 Q 200 150 400 50 T 800 150 T 1200 50" fill="none" stroke="#ca8a04" stroke-width="4" />
+                            <path d="M 100 0 Q 200 200 100 400" fill="none" stroke="#4b5563" stroke-width="3" />
+                            <path d="M 300 0 Q 400 200 300 400" fill="none" stroke="#4b5563" stroke-width="3" />
+                            <circle cx="150" cy="100" r="120" fill="none" stroke="#1e293b" stroke-width="40" />
+                        </svg>
+
+                        <!-- Store Location Pin (ADONAY Store - Bole) -->
+                        <div class="absolute top-16 left-1/4 flex flex-col items-center">
+                            <div class="bg-gold-500 text-black px-2 py-0.5 rounded font-bold text-[10px] shadow">አዶናይ ሽቶ ሱቅ (ቦሌ)</div>
+                            <div class="w-6 h-6 bg-gold-500 rounded-full flex items-center justify-center text-black text-xs font-bold border-2 border-black shadow-lg">
+                                <i class="fas fa-store"></i>
+                            </div>
+                        </div>
+
+                        <!-- Customer Location Pin -->
+                        <div class="absolute bottom-16 right-1/4 flex flex-col items-center">
+                            <div class="bg-emerald-500 text-black px-2 py-0.5 rounded font-bold text-[10px] shadow">የእርስዎ መድረሻ ቦታ</div>
+                            <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-black text-xs font-bold border-2 border-black shadow-lg pulse-effect">
+                                <i class="fas fa-user-pin"></i>
+                            </div>
+                        </div>
+
+                        <!-- Moving Yango Courier Car Pin -->
+                        <div id="yango-car-pin" class="absolute top-16 left-1/4 transition-all duration-1000 ease-linear flex flex-col items-center z-20">
+                            <div class="bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow">Yango ሹፌር</div>
+                            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white text-sm shadow-xl border-2 border-white animate-bounce">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map overlay UI controls -->
+                    <div class="relative z-10 flex justify-between items-start">
+                        <span class="bg-black/70 backdrop-blur-md text-gold-400 text-xs px-3 py-1.5 rounded-xl border border-gold-500/30 font-semibold">
+                            <i class="fas fa-map-marked-alt mr-1"></i> አዲስ አበባ (የቀጥታ GPS መከታተያ)
+                        </span>
+                        <button onclick="recenterMap()" class="bg-darkBg/80 text-white p-2 rounded-xl text-xs hover:bg-gray-800 border border-gray-700">
+                            <i class="fas fa-crosshairs"></i>
+                        </button>
+                    </div>
+
+                    <div class="relative z-10 bg-black/80 backdrop-blur-md p-3 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+                            <span id="driver-live-distance" class="text-xs text-gray-200">ሹፌሩ ከቦሌ ሱቅ ተነስቷል...</span>
+                        </div>
+                        <span class="text-xs text-gold-400 font-bold">GPS Active</span>
+                    </div>
+                </div>
+
+                <!-- Driver Card & Order Details -->
+                <div class="bg-darkCard rounded-2xl gold-border-glow p-5 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-gray-300 border-b border-gray-800 pb-2 mb-3">የመደበልዎ Yango ሹፌር</h4>
+                        
+                        <div class="flex items-center space-x-3 bg-darkBg p-3 rounded-xl border border-gray-800">
+                            <div class="w-12 h-12 rounded-full bg-gray-700 overflow-hidden flex-shrink-0">
+                                <img src="https://placehold.co/100x100/222/fff?text=Driver" alt="Yango Driver" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h5 id="driver-name-val" class="font-bold text-white text-sm">አቤል ተስፋዬ (Abel T.)</h5>
+                                <p class="text-xs text-gold-400"><i class="fas fa-star"></i> 4.9 (1,240+ ማድረሶች)</p>
+                                <p class="text-[11px] text-gray-400">ሞተርሳይክል: TVS Apache (AA-3-A9283)</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 space-y-2 text-xs">
+                            <div class="flex justify-between text-gray-400">
+                                <span>የትዕዛዝ ቁጥር (Order ID):</span>
+                                <span id="yango-order-id" class="text-white font-mono">#ADN-89234</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>የደንበኛ ስልክ:</span>
+                                <span id="yango-customer-phone" class="text-white">+251912345678</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>የማድረሻ ቦታ:</span>
+                                <span class="text-white">አዲስ አበባ (Addis Ababa)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 pt-3 border-t border-gray-800">
+                        <button onclick="callDriver()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center space-x-2">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>ለሹፌሩ ይደውሉ (09... )</span>
+                        </button>
+                        <button onclick="resetFlow()" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold py-2 rounded-xl transition text-xs">
+                            ወደ ዋናው ገጽ ተመለስ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SHOPPING CART MODAL SLIDE-OVER -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex justify-end">
+        <div class="w-full max-w-md bg-darkCard h-full p-6 flex flex-col justify-between border-l border-gold-600/30 space-y-4">
+            <div>
+                <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                    <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <i class="fas fa-shopping-bag text-gold-500"></i>
+                        <span>የእርስዎ የገበያ ካርት</span>
+                    </h3>
+                    <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List Container -->
+                <div id="cart-items-container" class="py-4 space-y-3 max-h-[60vh] overflow-y-auto">
+                    <!-- JS renders items here -->
+                </div>
+            </div>
+
+            <!-- Cart Footer Total & Checkout Button -->
+            <div class="border-t border-gray-800 pt-4 space-y-4">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-400">ጠቅላላ ዋጋ (Total):</span>
+                    <span id="cart-total-price" class="text-xl font-bold text-gold-400">0 ETB</span>
+                </div>
+                <button id="checkout-start-btn" onclick="startCheckoutProcess()" class="w-full bg-gold-600 hover:bg-gold-500 text-black font-bold py-3 rounded-xl transition shadow-lg text-sm flex items-center justify-center space-x-2">
+                    <span>ትዕዛዙን ያረጋግጡ (ይክፈሉ)</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 bg-darkBg py-6 px-4 text-center text-xs text-gray-500 space-y-2">
+        <p>© 2026 አዶናይ ሽቶ (ADONAY Perfumes) - መብቱ በህግ የተጠበቀ ነው።</p>
+        <p class="text-[11px] text-gray-600">በቴሌብር ክፍያ እና በYango Delivery የማድረስ አገልግሎት የተደገፈ።</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ADONAY Catalog Data
+        const productsData = [
+            {
+                id: 1,
+                name: "የወንዶች ቦዲ ስፕሬይ (Men's Body Spray)",
+                price: 750,
+                category: "Body Spray",
+                desc: "ለረጅም ሰዓታት የሚቆይ ፅኑና ማራኪ የወንዶች መዓዛ።",
+                img: "https://placehold.co/300x300/222/facc15?text=Men+Spray"
+            },
+            {
+                id: 2,
+                name: "የሴቶች ቦዲ ሚስት (Women's Body Mist)",
+                price: 850,
+                category: "Body Mist",
+                desc: "ለስላሳ እና ውብ የሴቶች ፍሬሽ መዓዛ ያለው።",
+                img: "https://placehold.co/300x300/222/facc15?text=Women+Mist"
+            },
+            {
+                id: 3,
+                name: "ሮል ኦን (ADONAY Roll On)",
+                price: 450,
+                category: "Roll On",
+                desc: "ቀኑን ሙሉ ትኩስነትን እና ጥሩ ጠረንን የሚሰጥ።",
+                img: "https://placehold.co/300x300/222/facc15?text=Roll+On"
+            },
+            {
+                id: 4,
+                name: "የሰውነት ሎሽን (Body Lotion)",
+                price: 1000,
+                category: "Body Lotion",
+                desc: "ቆዳን የሚያለሰልስ እና ደስ የሚል መዓዛ የሚያበቃ።",
+                img: "https://placehold.co/300x300/222/facc15?text=Body+Lotion"
+            }
+        ];
+
+        // State variables
+        let cart = {}; // product_id -> quantity
+        let generatedOTP = null;
+        let isPhoneVerified = false;
+        let uploadedScreenshot = null;
+        let driverInterval = null;
+
+        // Initialize App on DOM load
+        window.onload = function() {
+            renderCatalog();
+            updateCartUI();
+        };
+
+        // Render Product Catalog Cards
+        function renderCatalog() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = productsData.map(product => `
+                <div class="bg-darkCard rounded-2xl p-4 gold-border-glow flex flex-col justify-between hover:scale-[1.02] transition duration-300">
+                    <div>
+                        <div class="w-full h-48 rounded-xl bg-darkBg mb-3 overflow-hidden border border-gray-800">
+                            <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] text-gold-400 uppercase tracking-widest font-semibold">${product.category}</span>
+                        <h4 class="font-bold text-white text-sm mt-1">${product.name}</h4>
+                        <p class="text-xs text-gray-400 mt-1 line-clamp-2">${product.desc}</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between border-t border-gray-800/60 mt-3">
+                        <span class="text-base font-extrabold text-gold-400">${product.price} ETB</span>
+                        <button onclick="addToCart(${product.id})" class="bg-gold-600 hover:bg-gold-500 text-black px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1 transition shadow">
+                            <i class="fas fa-cart-plus"></i>
+                            <span>ጨምር</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Cart Actions
+        function addToCart(id) {
+            cart[id] = (cart[id] || 0) + 1;
+            updateCartUI();
+        }
+
+        function changeCartQty(id, delta) {
+            if (cart[id]) {
+                cart[id] += delta;
+                if (cart[id] <= 0) delete cart[id];
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items-container');
+            const cartBadge = document.getElementById('cart-badge-count');
+            const totalDisplay = document.getElementById('cart-total-price');
+            const telebirrTotal = document.getElementById('telebirr-pay-total');
+
+            let totalItems = 0;
+            let totalPrice = 0;
+            let html = '';
+
+            const keys = Object.keys(cart);
+            if (keys.length === 0) {
+                html = `
+                    <div class="text-center py-10 text-gray-500 space-y-2">
+                        <i class="fas fa-shopping-bag text-3xl text-gray-700"></i>
+                        <p class="text-xs">ካርትዎ ባዶ ነው! እባክዎ ምርት ይምረጡ።</p>
+                    </div>
+                `;
+            } else {
+                keys.forEach(id => {
+                    const product = productsData.find(p => p.id == id);
+                    const qty = cart[id];
+                    const itemTotal = product.price * qty;
+                    totalItems += qty;
+                    totalPrice += itemTotal;
+
+                    html += `
+                        <div class="flex items-center justify-between bg-darkBg p-3 rounded-xl border border-gray-800">
+                            <div class="flex items-center space-x-3">
+                                <img src="${product.img}" class="w-10 h-10 rounded-lg object-cover">
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">${product.name}</h5>
+                                    <p class="text-[11px] text-gold-400">${product.price} ETB</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="changeCartQty(${id}, -1)" class="w-6 h-6 bg-gray-800 text-gray-300 rounded flex items-center justify-center text-xs hover:bg-gray-700">-</button>
+                                <span class="text-xs font-bold text-white px-1">${qty}</span>
+                                <button onclick="changeCartQty(${id}, 1)" class="w-6 h-6 bg-gray-800 text-gray-300 rounded flex items-center justify-center text-xs hover:bg-gray-700">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            cartContainer.innerHTML = html;
+            cartBadge.innerText = totalItems;
+            totalDisplay.innerText = `${totalPrice} ETB`;
+            if (telebirrTotal) telebirrTotal.innerText = `${totalPrice} ETB`;
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Start Order Checkout Flow
+        function startCheckoutProcess() {
+            const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
+            if (totalItems === 0) {
+                alert("እባክዎ በመጀመሪያ ምርት ወደ ካርት ይጨምሩ!");
+                return;
+            }
+            toggleCartModal();
+            // Move to Section 2 (OTP)
+            showSection('section-otp');
+            updateStepper(2);
+        }
+
+        // Section Switcher
+        function showSection(sectionId) {
+            ['section-catalog', 'section-otp', 'section-telebirr', 'section-yango-gps'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateStepper(stepNumber) {
+            const progress = document.getElementById('step-line-progress');
+            progress.style.width = `${(stepNumber - 1) * 33.3}%`;
+
+            for (let i = 1; i <= 4; i++) {
+                const icon = document.getElementById(`step-icon-${i}`);
+                if (i <= stepNumber) {
+                    icon.className = 'w-10 h-10 rounded-full bg-gold-500 text-black font-bold flex items-center justify-center shadow-lg transition';
+                } else {
+                    icon.className = 'w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center border border-gray-700 transition';
+                }
+            }
+        }
+
+        // Step 1: OTP Code SMS Simulation
+        function sendOTPCode() {
+            const phone = document.getElementById('user-phone-input').value.trim();
+            if (!phone || phone.length < 9) {
+                alert("እባክዎ ትክክለኛ የስልክ ቁጥር ያስገቡ!");
+                return;
+            }
+
+            // Generate 4 digit code
+            generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+            document.getElementById('generated-otp-display').innerText = generatedOTP;
+
+            // Show Toast Simulation & OTP Field
+            document.getElementById('sms-toast-simulation').classList.remove('hidden');
+            document.getElementById('otp-field-container').classList.remove('hidden');
+        }
+
+        function verifyOTPCode() {
+            const userOTP = document.getElementById('otp-input-val').value.trim();
+            if (userOTP === generatedOTP) {
+                isPhoneVerified = true;
+                const phone = document.getElementById('user-phone-input').value.trim();
+                document.getElementById('yango-customer-phone').innerText = `+251${phone}`;
+                
+                // Advance to Telebirr Payment
+                showSection('section-telebirr');
+                updateStepper(3);
+            } else {
+                alert("የያስገቡት የSMS ኮድ አልተዛመደም! እባክዎ ደግመው ይሞክሩ።");
+            }
+        }
+
+        // Copy Merchant Phone
+        function copyPhone() {
+            const phone = document.getElementById('merchant-phone').innerText;
+            const el = document.createElement('textarea');
+            el.value = phone;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert("የቴሌብር ቁጥር " + phone + " ኮፒ ሆኗል!");
+        }
+
+        // Receipt Upload Preview
+        function handleReceiptUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedScreenshot = e.target.result;
+                    document.getElementById('receipt-preview-img').src = uploadedScreenshot;
+                    document.getElementById('uploaded-preview-container').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // AI System Receipt Scanner & Verification Simulation
+        function startReceiptScanVerification() {
+            const txnId = document.getElementById('txn-id-input').value.trim();
+            if (!uploadedScreenshot && !txnId) {
+                alert("እባክዎ የቴሌብር ክፍያ ስክሪንሾት ይጫኑ ወይም የትራንዛክሽን ቁጥር ያስገቡ!");
+                return;
+            }
+
+            const statusLog = document.getElementById('scanner-status-log');
+            const statusText = document.getElementById('scan-status-text');
+            const progressBar = document.getElementById('scan-progress-bar');
+            const verifyBtn = document.getElementById('verify-payment-btn');
+            const scanBar = document.getElementById('scan-bar');
+
+            statusLog.classList.remove('hidden');
+            scanBar.classList.remove('hidden');
+            verifyBtn.disabled = true;
+            verifyBtn.classList.add('opacity-50');
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 25;
+                progressBar.style.width = `${progress}%`;
+
+                if (progress === 25) {
+                    statusText.innerText = "የምስል ጥራት እና የቴሌብር ሎጎ በመፈተሽ ላይ...";
+                } else if (progress === 50) {
+                    statusText.innerText = "የክፍያ መጠን እና የባንክ ትራንዛክሽን ቁጥር መረጃ በመቃኘት ላይ...";
+                } else if (progress === 75) {
+                    statusText.innerText = "ከአዶናይ ቴሌብር ሂሳብ ጋር በስካነር እየተረጋገጠ ነው...";
+                } else if (progress >= 100) {
+                    clearInterval(interval);
+                    statusText.innerText = "ክፍያው በትክክል ተረጋግጧል! ወደ Yango Delivery ትዕዛዝ እየተላከ ነው...";
+                    
+                    setTimeout(() => {
+                        scanBar.classList.add('hidden');
+                        verifyBtn.disabled = false;
+                        verifyBtn.classList.remove('opacity-50');
+                        startYangoDeliveryTracking();
+                    }, 1200);
+                }
+            }, 700);
+        }
+
+        // Yango Live GPS Simulation
+        function startYangoDeliveryTracking() {
+            showSection('section-yango-gps');
+            updateStepper(4);
+
+            // Generate Random Order ID
+            const randomOrderId = '#ADN-' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('yango-order-id').innerText = randomOrderId;
+
+            // Animate Car Movement from Store to Customer
+            const carPin = document.getElementById('yango-car-pin');
+            const statusBadge = document.getElementById('yango-status-badge');
+            const liveDistanceText = document.getElementById('driver-live-distance');
+            const etaTime = document.getElementById('eta-time');
+
+            let step = 0;
+            // Clear any old interval
+            if (driverInterval) clearInterval(driverInterval);
+
+            driverInterval = setInterval(() => {
+                step++;
+                if (step === 1) {
+                    statusBadge.innerText = "ሹፌሩ ዕቃውን ከአዶናይ ቦሌ ሱቅ ተረክቧል";
+                    liveDistanceText.innerText = "ሹፌር አቤል ተስፋዬ ምርቱን ተረክቦ ወደ እርስዎ እየመጣ ነው...";
+                    carPin.style.top = "30%";
+                    carPin.style.left = "35%";
+                    etaTime.innerText = "15-18 ደቂቃ";
+                } else if (step === 2) {
+                    statusBadge.innerText = "በመንገድ ላይ (In Transit)";
+                    liveDistanceText.innerText = "ሹፌሩ በአቅራቢያዎ መንገድ ላይ ይገኛል...";
+                    carPin.style.top = "55%";
+                    carPin.style.left = "55%";
+                    etaTime.innerText = "5-8 ደቂቃ";
+                } else if (step >= 3) {
+                    clearInterval(driverInterval);
+                    statusBadge.className = "bg-emerald-500 text-black text-xs font-bold px-2.5 py-0.5 rounded-full";
+                    statusBadge.innerText = "ሹፌሩ ደርሷል!";
+                    liveDistanceText.innerText = "Yango ሹፌሩ መድረሻ ቦታዎ ላይ ደርሷል። እባክዎ ዕቃዎን ይቀበሉ!";
+                    carPin.style.top = "70%";
+                    carPin.style.left = "70%";
+                    etaTime.innerText = "0 ደቂቃ (ደረሰ)";
+                }
+            }, 4000);
+        }
+
+        function recenterMap() {
+            alert("የቀጥታ GPS ካርታው በአዲስ አበባ ከተማ ተስተካክሏል።");
+        }
+
+        function callDriver() {
+            alert("ለYango ሹፌር አቤል ተስፋዬ (0911223344) እየደወሉ ነው...");
+        }
+
+        function resetFlow() {
+            cart = {};
+            updateCartUI();
+            showSection('section-catalog');
+            updateStepper(1);
+            document.getElementById('sms-toast-simulation').classList.add('hidden');
+            document.getElementById('otp-field-container').classList.add('hidden');
+            document.getElementById('uploaded-preview-container').classList.add('hidden');
+            document.getElementById('scanner-status-log').classList.add('hidden');
+            document.getElementById('otp-input-val').value = '';
+            document.getElementById('txn-id-input').value = '';
+        }
+    </script>
+</body>
+</html>
